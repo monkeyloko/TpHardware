@@ -3,16 +3,25 @@ import { SafeAreaView,  Text,  StyleSheet, TouchableOpacity } from "react-native
 
 const Home = ({navigation }) => {
 
-    const onPressed=()=>{
+    const onPressedContacto=()=>{
 
         console.log("se toca el boton")
         navigation.navigate("Contacts")
     }
 
+    const onPressedTemperatura=()=>{
+
+        console.log("se toca el boton")
+        navigation.navigate("Temperatura")  
+    }
+
     return(
         <SafeAreaView>
-            <TouchableOpacity style={styles.button} onPress={() => onPressed()}>
+            <TouchableOpacity style={styles.button} onPress={() => onPressedContacto()}>
                 <Text style ={styles.buttonText}>Contactos</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => onPressedTemperatura()}>
+                <Text style ={styles.buttonText}>Temperatura</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )
