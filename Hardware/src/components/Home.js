@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, FlatList, Text, View, StyleSheet, TouchableOpacity, ScrollView, Animated } from "react-native";
+import { SafeAreaView,  Text,  StyleSheet, TouchableOpacity } from "react-native";
 
 const Home = ({navigation }) => {
 
     const onPressed=()=>{
+
         console.log("se toca el boton")
-        //navigation.navigate("")
+        navigation.navigate("Contacts")
     }
 
     return(
         <SafeAreaView>
             <TouchableOpacity style={styles.button} onPress={() => onPressed()}>
-                <Text style ={styles.buttonText}>Acerca</Text>
+                <Text style ={styles.buttonText}>Contactos</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )
