@@ -4,18 +4,24 @@ import * as Contacts from 'expo-contacts';
 
 const Contactos = () => {
   const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const { status } = await Contacts.requestPermissionsAsync();
       if (status === 'granted') {
         const { data } = await Contacts.getContactsAsync({
-          fields: [Contacts.Fields.FirstName, Contacts.Fields.LastName, Contacts.Fields.PhoneNumbers, Contacts.Fields.IsDefaultEmergency],
+          fields: [Contacts.Fields.FirstName, Contacts.Fields.LastName, Contacts.Fields.PhoneNumbers],
         });
 
         if (data.length > 0) {
+         
           setContacts(data);
+          setLoading(true);
         }
+        console.log(contacts);
+        console.log("pene");
       }
     })();
   }, []);
@@ -23,10 +29,9 @@ const Contactos = () => {
   const renderItem = ({ item }) => (
     <View style={styles.contactItem}>
       <Text>{`${item.firstName} ${item.lastName}`}</Text>
+      {item.phoneNumbers && item.phoneNumbers.length > 0 && (
       <Text>{item.phoneNumbers[0].number}</Text>
-      {item.isDefaultEmergency && (
-        <Text style={styles.emergencyText}>Emergencia</Text>
-      )}
+    )}
     </View>
   );
 
