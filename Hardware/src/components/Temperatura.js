@@ -22,7 +22,6 @@ const Temperatura = () => {
       } else {
         let userLocation = await Location.getCurrentPositionAsync({});
         setLocation(userLocation);
-
         // Obtener la temperatura actual
         try {
           const response = await axios.get(
