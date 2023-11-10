@@ -41,7 +41,7 @@ const QR = () => {
           />
           {scanned && (
             <Button
-              title={"Tap to Scan Again"}
+              title={"Toca para escanear"}
               onPress={() => setScanned(false)}
             />
           )}
