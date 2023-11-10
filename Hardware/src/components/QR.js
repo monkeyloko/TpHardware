@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
+
 const QR = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -29,6 +30,7 @@ const QR = () => {
         <QRCode
           value="Joaquin Maceira, Santiago Doff, Lorenzo Shammah Zalba"
           size={350}
+        //logo={{ uri: 'assets:/zheoden.jfif' }}
         />
       </View>
       {!hasPermission ? (

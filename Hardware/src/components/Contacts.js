@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ActivityIndicator } from 'react-native';
 import * as Contacts from 'expo-contacts';
 
 const Contactos = () => {
@@ -36,7 +36,7 @@ const Contactos = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Lista de Contactos:</Text>
       {loading ? (
-        <Text>Cargando...</Text>
+        <ActivityIndicator size="large" color="blue" />
       ) : (
         <FlatList
           data={contacts}
@@ -82,4 +82,3 @@ const styles = StyleSheet.create({
 });
 
 export default Contactos;
-  
