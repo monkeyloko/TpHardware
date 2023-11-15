@@ -24,12 +24,24 @@ const Contactos = () => {
   }, []);
 
   const renderItem = ({ item }) => (
-    <View style={styles.contactItem}>
-      <Text style={styles.contactName}>{`${item.firstName} ${item.lastName}`}</Text>
-      {item.phoneNumbers && item.phoneNumbers.length > 0 && (
-        <Text>{item.phoneNumbers[0].number}</Text>
-      )}
-    </View>
+    (item.firstName || item.lastName) ? (
+      <View style={styles.contactItem}>
+
+        <Text style={styles.contactName}>
+          {item.firstName} {item.lastName}
+        </Text>
+
+        {item.phoneNumbers && item.phoneNumbers.length > 0 && (
+          <View>
+            <Text>Números de teléfono:</Text>
+            {item.phoneNumbers.map((phoneNumber, index) => (
+              <Text key={index}>{phoneNumber.number}</Text>
+            ))}
+          </View>
+        )}
+
+      </View>) : null
+
   );
 
   return (

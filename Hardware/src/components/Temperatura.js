@@ -45,8 +45,16 @@ const Temperatura = () => {
           <Text style={styles.temperatureText}>
             Temperatura: {temperature.main.temp}°C
           </Text>
+
+          <Text style={styles.description}>
+            {temperature.weather[0].description}
+          </Text>
+
           <Text style={styles.countryText}>
             País: {temperature.sys.country}
+          </Text>
+          <Text style={styles.countryText}>
+            Barrio: {temperature.name}
           </Text>
         </View>
       ) : (
@@ -87,9 +95,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#3498db',
   },
+  description: {
+    fontSize: 16,
+    marginBottom: 10,
+    color: '#3498db',
+  },
   countryText: {
     fontSize: 16,
     color: '#34495e',
+    marginBottom: 10,
   },
   error: {
     fontSize: 16,
