@@ -10,29 +10,25 @@ const Temperatura = () => {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-          setErrorMsg('Permission to access location was denied');
-          setLoading(false);
-        } else {
-          let userLocation = await Location.getCurrentPositionAsync({});
-          setLocation(userLocation);
-          const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.coords.latitude}&lon=${userLocation.coords.longitude}&APPID=0cd4c845628a93ee3dd46acea3646046&units=metric`
-          );
-          setTemperature(response.data);
-          setLoading(false);
-        }
-      } catch (error) {
-        setErrorMsg('Error fetching temperature data');
-        setLoading(false);
+  useEffect(  () => {
+    (async () => {
+      
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        setLoading(false)
+        return;
       }
-    };
 
-    fetchData();
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&APPID=0cd4c845628a93ee3dd46acea3646046&units=metric`
+      );
+      setTemperature(response.data);
+      setLoading(false);
+    })();
   }, []);
 
   return (

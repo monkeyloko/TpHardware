@@ -19,22 +19,34 @@ const Home = ({navigation }) => {
     }
 
     return(
-        <SafeAreaView>
-            <TouchableOpacity style={styles.button} onPress={() => onPressedContacto()}>
-                <Text style ={styles.buttonText}>Contactos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => onPressedTemperatura()}>
-                <Text style ={styles.buttonText}>Temperatura</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => onPressedQR()}>
-                <Text style ={styles.buttonText}>Acerca de</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.home}>Home</Text>
+      <TouchableOpacity style={styles.button} onPress={() => onPressedContacto()}>
+        <Text style={styles.buttonText}>Contactos</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => onPressedTemperatura()}>
+        <Text style={styles.buttonText}>Temperatura</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => onPressedQR()}>
+        <Text style={styles.buttonText}>Acerca de</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
     )
     
 }
 const styles = StyleSheet.create({
+    home: {
+        
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
+    container: {
+        flex: 0.5,
+        justifyContent: "center",
+        alignItems: "center",
+      },
     button: {
+        width: '90%',
         backgroundColor: '#007bff',
         borderRadius: 5,
         paddingVertical: 12,
